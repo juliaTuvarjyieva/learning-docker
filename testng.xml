@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="Suite" parallel="tests" >
+    <listeners>
+        <listener class-name="com.jcg.selenium.testng.InvokedMethodListener"></listener>
+    </listeners>
+    <test name="com.FirstTest" parallel="methods" thread-count="2">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.jcg.selenium.testng.FirstTest">
+                <methods>
+                    <include name="GOOGLE0" />
+                    <include name="GOOGLE2" />
+                    <include name="GOOGLE3" />
+                    <include name="GOOGLE4" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="com.SecondTest"  parallel="methods" thread-count="2">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.jcg.selenium.testng.SecondTest">
+                <methods>
+                    <include name="GOOGLE1" />
+                    <include name="YANDEX1" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
