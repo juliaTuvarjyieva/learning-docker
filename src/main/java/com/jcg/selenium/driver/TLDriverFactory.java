@@ -53,4 +53,8 @@ public class TLDriverFactory {
     public static synchronized WebDriver getDriver() {
         return tlDriver.get();
     }
+
+    public static synchronized void quiteDriver() {
+         tlDriver.get().quit();
+    }
 }

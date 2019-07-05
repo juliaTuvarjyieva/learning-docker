@@ -4,6 +4,7 @@ import com.jcg.selenium.driver.DesktopDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 
@@ -16,6 +17,11 @@ public abstract class BaseTest extends AbstractTestNGSpringContextTests {
     @BeforeMethod
     public void initiateDriver() {
         desktopDriver.initiateDriver();
+    }
+
+    @AfterMethod
+    public void quiteDriver() {
+        desktopDriver.quiteDriver();
     }
 
 }

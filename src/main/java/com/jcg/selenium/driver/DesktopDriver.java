@@ -8,6 +8,10 @@ import java.net.MalformedURLException;
 public interface DesktopDriver {
 
     WebDriver desktopDriver() throws MalformedURLException;
-
     void initiateDriver();
+
+    default void quiteDriver() {
+        TLDriverFactory.quiteDriver();
+    }
+
 }
