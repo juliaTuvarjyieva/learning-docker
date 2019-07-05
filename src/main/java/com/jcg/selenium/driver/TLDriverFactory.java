@@ -4,14 +4,11 @@ import com.jcg.selenium.testngtests.OptionsManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.context.annotation.Configuration;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-
-@Configuration
 public class TLDriverFactory {
 
     private static OptionsManager optionsManager = new OptionsManager();

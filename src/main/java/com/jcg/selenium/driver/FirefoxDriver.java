@@ -2,13 +2,13 @@ package com.jcg.selenium.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
-@Service
+@Configuration
 @Profile("firefox")
 public class FirefoxDriver implements DesktopDriver {
 

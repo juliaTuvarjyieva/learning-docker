@@ -8,7 +8,6 @@ import org.springframework.core.env.Environment;
 
 import java.util.concurrent.TimeUnit;
 
-
 @Configuration
 @Profile("chrome")
 public class ChromeDriver implements DesktopDriver {
