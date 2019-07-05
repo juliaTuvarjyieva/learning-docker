@@ -1,13 +1,9 @@
-package com.jcg.selenium.testng;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+package com.jcg.selenium.testngtests;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 
-    public class TestBase {
+public class TestBase {
 
         //public WebDriver driver;
         //public Map<Long, WebDriver> driverMap = new ConcurrentHashMap();

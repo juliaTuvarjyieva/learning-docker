@@ -3,6 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
+
 sourceCompatibility = 1.8
 
 repositories {
@@ -13,21 +14,12 @@ dependencies {
     compile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     compile group: 'org.testng', name: 'testng', version: '6.14.3'
+    compile group: 'org.jasypt', name: 'jasypt', version: '1.9.2'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.1.6.RELEASE'
+    compile group: 'io.appium', name: 'java-client', version: '7.0.0'
+    compile group: 'org.springframework', name: 'spring-core', version: '5.1.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version: '5.1.8.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.6.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.1.6.RELEASE'
 
-}
-
-//test {
-//    maxParallelForks = 10
-//    testLogging.showStandardStreams = true
-//}
-
-group 'com.jcg'
-version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
 }
