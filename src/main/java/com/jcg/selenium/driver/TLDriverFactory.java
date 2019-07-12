@@ -1,7 +1,12 @@
 package com.jcg.selenium.driver;
 
+import com.jcg.selenium.constants.PathConstants;
 import com.jcg.selenium.testngtests.OptionsManager;
+import com.jcg.selenium.utils.AuthStorage;
+import com.jcg.selenium.utils.DriverType;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,34 +21,36 @@ public class TLDriverFactory {
 
     public static synchronized void setDriver(String profile) {
 
-        if (profile.equals("firefox")) {
-            //For Local Usage
-            //tlDriver = ThreadLocal.withInitial(() -> new FirefoxDriver(optionsManager.getFirefoxOptions()));
-
-            //For Grid Usage
-            try {
-
-                tlDriver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), optionsManager.getFirefoxOptions()));
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
+        if (profile.equals(DriverType.FIREFOX.getDriverType())) {
+            if (!AuthStorage.isDockerRun()) {
+                System.setProperty(PathConstants.FIREFOX_DRIVER, PathConstants.FIREFOХ_PATH);
+                tlDriver = ThreadLocal.withInitial(() -> new FirefoxDriver(optionsManager.getFirefoxOptions()));
+            } else {
+                try {
+                    tlDriver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), optionsManager.getFirefoxOptions()));
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
             }
-        } else if (profile.equals("chrome")) {
-            //For Local Usage
-            //tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
-
-            //For Grid Usage
-            try {
-                tlDriver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), optionsManager.getChromeOptions()));
-                tlDriver.get().manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
+        } else if (profile.equals(DriverType.CHROME.getDriverType())) {
+            if (!AuthStorage.isDockerRun()) {
+                System.setProperty(PathConstants.CHROME_DRIVER, PathConstants.CHROME_PATH);
+                tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+            } else {
+                try {
+                    tlDriver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), optionsManager.getChromeOptions()));
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
+
+        tlDriver.get().manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
     }
 
-    public static synchronized WebDriverWait getWait (WebDriver driver) {
-        return new WebDriverWait(driver,10);
+    public static synchronized WebDriverWait getWait(WebDriver driver) {
+        return new WebDriverWait(driver, 10);
     }
 
 
@@ -52,6 +59,6 @@ public class TLDriverFactory {
     }
 
     public static synchronized void quiteDriver() {
-         tlDriver.get().quit();
+        tlDriver.get().quit();
     }
 }

@@ -7,9 +7,13 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.net.MalformedURLException;
+
 
 @ContextConfiguration(locations = {"classpath:spring-test-config.xml"})
 public abstract class BaseTest extends AbstractTestNGSpringContextTests {
+
+    private static final String BASE_URL = "https://koala-apps.idtmessaging.com/configuration-admin-development/index.html";
 
     @Autowired
     protected DesktopDriver desktopDriver;
@@ -17,6 +21,11 @@ public abstract class BaseTest extends AbstractTestNGSpringContextTests {
     @BeforeMethod
     public void initiateDriver() {
         desktopDriver.initiateDriver();
+        try {
+            desktopDriver.desktopDriver().get(BASE_URL);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     @AfterMethod

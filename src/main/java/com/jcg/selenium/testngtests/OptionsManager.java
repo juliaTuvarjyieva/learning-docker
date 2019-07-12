@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class OptionsManager {
     //Get Chrome Options
@@ -23,7 +24,9 @@ public class OptionsManager {
 
     //Get Firefox Options
     public FirefoxOptions getFirefoxOptions () {
-        FirefoxOptions options = new FirefoxOptions();
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setCapability("marionette", true);
+        FirefoxOptions options = new FirefoxOptions(capabilities);
         //FirefoxProfile profile = new FirefoxProfile();
         //Accept Untrusted Certificates
 //        profile.setAcceptUntrustedCertificates(true);
