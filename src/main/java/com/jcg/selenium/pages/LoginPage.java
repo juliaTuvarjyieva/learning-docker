@@ -8,8 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.net.MalformedURLException;
-
 @Component
 public class LoginPage {
 
@@ -24,7 +22,7 @@ public class LoginPage {
     private By loginButton = By.xpath("//html/body/div[1]/div/div/div[2]/div/div/div/div[3]/button/div/div");
 
 
-    public HomePage login(String username, String password) throws MalformedURLException {
+    public HomePage login(String username, String password) {
         WebDriverWait wait = new WebDriverWait(desktopDriver.desktopDriver(), 10);
         wait.until(ExpectedConditions.presenceOfElementLocated(usernameField)).sendKeys(username);
         desktopDriver.desktopDriver().findElement(passwordField).sendKeys(password);
@@ -32,7 +30,7 @@ public class LoginPage {
         return homePage;
     }
 
-    public HomePage login(User user) throws MalformedURLException {
+    public HomePage login(User user) {
         return login(user.getUsername(), user.getPassword());
     }
 
