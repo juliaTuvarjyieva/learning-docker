@@ -21,7 +21,6 @@ public class InvokedMethodListener implements IInvokedMethodListener {
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
         if (method.isTestMethod()) {
             System.out.println("Test Method BeforeInvocation is started. " + Thread.currentThread().getId());
-           // TLDriverFactory.setDriver();
             desktopDriver.initiateDriver();
         }
     }

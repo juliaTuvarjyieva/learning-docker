@@ -6,8 +6,6 @@ import com.jcg.selenium.utils.PredefinedTextEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
-import java.net.MalformedURLException;
-
 
 public class LogInTest extends BaseTest {
 
@@ -18,7 +16,7 @@ public class LogInTest extends BaseTest {
     LoginPage loginPage;
 
     @Test
-    public void logInTest() throws MalformedURLException, InterruptedException {
+    public void logInTest() throws InterruptedException {
 
         User user = new User();
         user.setUsername(PredefinedTextEncryptor.decrypt(USER_NAME));
